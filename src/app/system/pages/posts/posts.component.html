@@ -1,0 +1,42 @@
+<div class="row w-100 p-3 m-0">
+<div class="col-12 col-lg-4">
+  <mat-form-field appearance="standard">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
+</div>
+  <div class="col-12">
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+       class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th style="width:100px" mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let element">{{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="userId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>User</th>
+    <td mat-cell *matCellDef="let element"><a routerLink="/user/{{element.userId}}" class="text-primary" style="cursor:pointer">User {{element.userId}}</a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+    <td mat-cell *matCellDef="let element"><a routerLink="/posts/{{element.id}}" class="text-primary" style="cursor:pointer">{{element.title}}</a></td>
+  </ng-container>
+
+  <ng-container matColumnDef="body">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Content</th>
+    <td mat-cell *matCellDef="let element">{{element.body}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+   <tr *matNoDataRow>
+     <td class="mat-cell" colspan="4">This filter does not much any item in the data for this text <span class="font-weight-bold">{{input.value}}</span> </td>
+   </tr>
+</table>
+
+  <mat-paginator [pageSizeOptions]="[10,25,100]"></mat-paginator>
+</div>
+</div>

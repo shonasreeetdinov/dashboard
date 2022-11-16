@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+  tr {
+    td {
+      color: black;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

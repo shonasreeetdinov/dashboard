@@ -1,0 +1,29 @@
+<div class="row justify-content-center w-100 p-3 m-0">
+
+  <div class="col-12 col-md-4 mb-4 mb-md-0">
+    <div class="author-header">
+     <div class=" mb-1">Name: <span class="font-weight-bold">{{user?.name}}</span></div>
+     <div class=" mb-1">Username: <span class="font-weight-bold">@{{user?.username}}</span></div>
+     <div class=" mb-1">Email: <span class="font-weight-bold">{{user?.email}}</span></div>
+     <div class=" mb-1">Website: <span class="font-weight-bold">{{user?.website}}</span></div>
+     <div class="">Company Name: <span class="font-weight-bold">{{user?.company?.name}}</span></div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-8">
+    <div class="card">
+      <div class="card-header">
+        Posts
+      </div>
+      <div class="list-group list-group-flush">
+        <ul class="list-group mt-3"
+            style="overflow-y: auto;max-height:400px;">
+          <mat-card class="list-group-item" *ngFor="let post of postsUser">
+            <div class="font-weight-bold text-center mb-1">{{post?.title}}</div>
+            <mat-card-subtitle>{{post?.body}}</mat-card-subtitle>
+          </mat-card>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
